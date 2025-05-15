@@ -24,7 +24,7 @@ func FindChineseLines(text string) []int {
 		}
 
 		if hasHan && !hasJapanese {
-			result = append(result, i)
+			result = append(result, i+1)
 		}
 	}
 
@@ -39,7 +39,7 @@ func FindJapaneseLines(text string) []int {
 	for i, line := range lines {
 		for _, r := range line {
 			if unicode.In(r, unicode.Hiragana, unicode.Katakana, unicode.Han) {
-				result = append(result, i)
+				result = append(result, i+1)
 				break
 			}
 		}
@@ -56,7 +56,7 @@ func FindKoreanLines(text string) []int {
 	for i, line := range lines {
 		for _, r := range line {
 			if unicode.In(r, unicode.Hangul) {
-				result = append(result, i)
+				result = append(result, i+1)
 				break
 			}
 		}

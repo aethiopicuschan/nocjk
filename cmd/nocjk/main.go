@@ -17,8 +17,10 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:          "nocjk",
-	Long:         "nocjk is a command-line tool for detecting CJK text",
+	Use:          "nocjk [directory]",
+	Short:        "Detect CJK text in files",
+	Long:         "nocjk is a command-line tool for detecting CJK (Chinese, Japanese, Korean) text in files under a directory.",
+	Args:         cobra.MaximumNArgs(1),
 	RunE:         run,
 	SilenceUsage: true,
 }
@@ -32,14 +34,20 @@ func init() {
 	}
 }
 
-func run(cmd *cobra.Command, args []string) (err error) {
-	dir, err := os.Getwd()
-	if err != nil {
-		log.Fatalf("Failed to get current directory: %v", err)
+func run(cmd *cobra.Command, args []string) error {
+	var rootDir string
+	if len(args) > 0 {
+		rootDir = args[0]
+	} else {
+		var err error
+		rootDir, err = os.Getwd()
+		if err != nil {
+			log.Fatalf("Failed to get current directory: %v", err)
+		}
 	}
 
 	var matcher gitignore.Matcher
-	ignorePath := filepath.Join(dir, ".nocjkignore")
+	ignorePath := filepath.Join(rootDir, ".nocjkignore")
 	if f, err := os.Open(ignorePath); err == nil {
 		defer f.Close()
 
@@ -57,7 +65,7 @@ func run(cmd *cobra.Command, args []string) (err error) {
 
 	detected := false
 
-	err = filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
+	err := filepath.WalkDir(rootDir, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
@@ -67,7 +75,7 @@ func run(cmd *cobra.Command, args []string) (err error) {
 		}
 
 		if matcher != nil {
-			rel, err := filepath.Rel(dir, path)
+			rel, err := filepath.Rel(rootDir, path)
 			if err == nil && matcher.Match(strings.Split(rel, string(filepath.Separator)), d.IsDir()) {
 				if d.IsDir() {
 					return filepath.SkipDir
@@ -98,7 +106,7 @@ func run(cmd *cobra.Command, args []string) (err error) {
 
 		if len(detectedLines) > 0 {
 			detected = true
-			relPath, err := filepath.Rel(dir, path)
+			relPath, err := filepath.Rel(rootDir, path)
 			if err != nil {
 				relPath = path
 			}
@@ -111,9 +119,9 @@ func run(cmd *cobra.Command, args []string) (err error) {
 	})
 
 	if detected {
-		err = fmt.Errorf("cjk text detected")
+		return fmt.Errorf("cjk text detected")
 	}
-	return
+	return err
 }
 
 func main() {
