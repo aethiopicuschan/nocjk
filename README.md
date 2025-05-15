@@ -48,7 +48,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Detect CJK text
-        uses: aethiopicuschan/nocjk/actions/nocjk-action@v1.0.0
+        uses: aethiopicuschan/nocjk/actions/nocjk-action@v1.2.0
+        with:
+          ignore_chinese: false
+          ignore_japanese: false
+          ignore_korean: false
+          args: "."
 ```
 
 See [nocjk-action on GitHub](https://github.com/aethiopicuschan/nocjk/tree/main/actions/nocjk-action) for more details.
