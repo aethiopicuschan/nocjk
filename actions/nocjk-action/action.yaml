@@ -2,12 +2,25 @@ name: "nocjk Action"
 description: "Run nocjk command easily in GitHub Actions"
 inputs:
   args:
-    description: "Arguments for nocjk command"
+    description: "Additional arguments for nocjk command"
     required: false
     default: ""
+  ignore_chinese:
+    description: "Ignore detection of Chinese text"
+    required: false
+    default: "false"
+  ignore_japanese:
+    description: "Ignore detection of Japanese text"
+    required: false
+    default: "false"
+  ignore_korean:
+    description: "Ignore detection of Korean text"
+    required: false
+    default: "false"
 runs:
   using: "docker"
   image: "Dockerfile"
+  entrypoint: "/entrypoint.sh"
 branding:
   icon: "check-circle"
   color: "blue"
