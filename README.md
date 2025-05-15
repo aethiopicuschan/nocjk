@@ -13,10 +13,20 @@
 
 ```sh
 go install github.com/aethiopicuschan/nocjk/cmd/nocjk@latest
-nocjk
+nocjk .
 ```
 
 When CJK text is detected, the CLI exits with error code 1.
+
+#### Ignore
+
+If you want to ignore the detection of a specific language, you can use the following option.
+
+- `--ignore-chinese` to ignore Chinese text
+- `--ignore-japanese` to ignore Japanese text
+- `--ignore-korean` to ignore Korean text
+
+You can also define ignore rules using a `.nocjkignore` file in your project root. The format of `.nocjkignore` is fully compatible with `.gitignore`. Files and directories matching the patterns in this file will be skipped during CJK text detection. This is especially useful when you want to exclude certain generated files or third-party code from being analyzed.
 
 ### As a library:
 
@@ -32,7 +42,7 @@ You can easily integrate `nocjk` into your GitHub Actions workflows to automatic
 
 ```yaml
 jobs:
-  check-japanese:
+  check-cjk:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +52,3 @@ jobs:
 ```
 
 See [nocjk-action on GitHub](https://github.com/aethiopicuschan/nocjk/tree/main/actions/nocjk-action) for more details.
-
-## Ignore Rules
-
-You can define ignore rules using a `.nocjkignore` file in your project root. The format of `.nocjkignore` is fully compatible with `.gitignore`. Files and directories matching the patterns in this file will be skipped during CJK text detection. This is especially useful when you want to exclude certain generated files or third-party code from being analyzed.
