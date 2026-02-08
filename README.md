@@ -4,13 +4,13 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/aethiopicuschan/nocjk.svg)](https://pkg.go.dev/github.com/aethiopicuschan/nocjk)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aethiopicuschan/nocjk)](https://goreportcard.com/report/github.com/aethiopicuschan/nocjk)
 [![CI](https://github.com/aethiopicuschan/nocjk/actions/workflows/ci.yaml/badge.svg)](https://github.com/aethiopicuschan/nocjk/actions/workflows/ci.yaml)
-[![nocjk Action](https://img.shields.io/badge/GitHub%20Action-nocjk-blue?logo=github-actions)](https://github.com/aethiopicuschan/nocjk)
+[![nocjk Action](https://img.shields.io/badge/GitHub%20Action-nocjk-blue?logo=github-actions)](https://github.com/marketplace/actions/nocjk)
 
 `nocjk` is a simple CLI tool and library to detect CJK (Chinese, Japanese, and Korean) text.
 
 ## Installation
 
-### As a CLI tool:
+### As a CLI tool
 
 ```sh
 go install github.com/aethiopicuschan/nocjk/cmd/nocjk@latest
@@ -19,30 +19,34 @@ nocjk
 
 When CJK text is detected, the CLI exits with error code 1.
 
-### As a library:
+### As a library
 
 ```sh
 go get -u github.com/aethiopicuschan/nocjk/pkg/nocjk
 ```
 
-`nocjk` provides `FindChineseLines`, `FindJapaneseLines`, `FindKoreanLines` and `FindCJKLines` functions to detect CJK text in a string. More information can be found in the [documentation](https://pkg.go.dev/github.com/aethiopicuschan/nocjk).
+`nocjk` provides `FindChineseLines`, `FindJapaneseLines`, `FindKoreanLines`, and `FindCJKLines` functions to detect CJK text in a string. More information can be found in the documentation.
+
+https://pkg.go.dev/github.com/aethiopicuschan/nocjk
 
 ## Usage with GitHub Actions
 
-You can easily integrate `nocjk` into your GitHub Actions workflows to automatically detect CJK text during code changes. Here is a basic example:
+You can integrate `nocjk` into your GitHub Actions workflows to automatically detect CJK text during code changes.
 
 ```yaml
 jobs:
-  check-japanese:
+  check-cjk:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - name: Detect CJK text
-        uses: aethiopicuschan/nocjk/actions/nocjk-action@v1.0.0
+        uses: aethiopicuschan/nocjk@v2
 ```
 
-See [nocjk-action on GitHub](https://github.com/aethiopicuschan/nocjk/tree/main/actions/nocjk-action) for more details.
+See the action on GitHub Marketplace for more details.
+
+https://github.com/marketplace/actions/nocjk
 
 ## Ignore Rules
 

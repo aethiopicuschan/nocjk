@@ -16,6 +16,12 @@ import (
 	"gopkg.in/src-d/go-git.v4/plumbing/format/gitignore"
 )
 
+var (
+	ignoreChinese  bool
+	ignoreJapanese bool
+	ignoreKorean   bool
+)
+
 var rootCmd = &cobra.Command{
 	Use:          "nocjk [directory]",
 	Short:        "Detect CJK text in files",
@@ -26,6 +32,10 @@ var rootCmd = &cobra.Command{
 }
 
 func init() {
+	rootCmd.Flags().BoolVar(&ignoreChinese, "ignore-chinese", false, "Ignore detection of Chinese text")
+	rootCmd.Flags().BoolVar(&ignoreJapanese, "ignore-japanese", false, "Ignore detection of Japanese text")
+	rootCmd.Flags().BoolVar(&ignoreKorean, "ignore-korean", false, "Ignore detection of Korean text")
+
 	bi, ok := debug.ReadBuildInfo()
 	if ok && bi.Main.Version != "" {
 		rootCmd.Version = bi.Main.Version
@@ -98,9 +108,16 @@ func run(cmd *cobra.Command, args []string) error {
 		detectedLinesMap := nocjk.FindCJKLines(text)
 
 		var lines []int
-		lines = append(lines, detectedLinesMap["chinese"]...)
-		lines = append(lines, detectedLinesMap["japanese"]...)
-		lines = append(lines, detectedLinesMap["korean"]...)
+		if !ignoreChinese {
+			lines = append(lines, detectedLinesMap["chinese"]...)
+		}
+		if !ignoreJapanese {
+			lines = append(lines, detectedLinesMap["japanese"]...)
+		}
+		if !ignoreKorean {
+			lines = append(lines, detectedLinesMap["korean"]...)
+		}
+
 		slices.Sort(lines)
 		detectedLines := slices.Compact(lines)
 
