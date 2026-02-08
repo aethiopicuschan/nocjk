@@ -108,16 +108,9 @@ func run(cmd *cobra.Command, args []string) error {
 		detectedLinesMap := nocjk.FindCJKLines(text)
 
 		var lines []int
-		if !ignoreChinese {
-			lines = append(lines, detectedLinesMap["chinese"]...)
-		}
-		if !ignoreJapanese {
-			lines = append(lines, detectedLinesMap["japanese"]...)
-		}
-		if !ignoreKorean {
-			lines = append(lines, detectedLinesMap["korean"]...)
-		}
-
+		lines = append(lines, detectedLinesMap["chinese"]...)
+		lines = append(lines, detectedLinesMap["japanese"]...)
+		lines = append(lines, detectedLinesMap["korean"]...)
 		slices.Sort(lines)
 		detectedLines := slices.Compact(lines)
 
