@@ -25,9 +25,7 @@ When CJK text is detected, the CLI exits with error code 1.
 go get -u github.com/aethiopicuschan/nocjk/pkg/nocjk
 ```
 
-`nocjk` provides `FindChineseLines`, `FindJapaneseLines`, `FindKoreanLines`, and `FindCJKLines` functions to detect CJK text in a string. More information can be found in the documentation.
-
-https://pkg.go.dev/github.com/aethiopicuschan/nocjk
+`nocjk` provides `FindChineseLines`, `FindJapaneseLines`, `FindKoreanLines`, and `FindCJKLines` functions to detect CJK text in a string. More information can be found in the [documentation](https://pkg.go.dev/github.com/aethiopicuschan/nocjk@v1.2.0/pkg/nocjk).
 
 ## Usage with GitHub Actions
 
@@ -44,9 +42,7 @@ jobs:
         uses: aethiopicuschan/nocjk@v2
 ```
 
-See the action on GitHub Marketplace for more details.
-
-https://github.com/marketplace/actions/nocjk
+See the [action](https://github.com/marketplace/actions/nocjk) on GitHub Marketplace for more details.
 
 ## Ignore Rules
 
