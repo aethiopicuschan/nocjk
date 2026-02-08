@@ -36,9 +36,9 @@ jobs:
 | Name            | Description                          | Default |
 | --------------- | ------------------------------------ | ------- |
 | args            | Paths or arguments passed to `nocjk` | .       |
-| ignore_chinese  | Ignore Chinese text                  | "false" |
-| ignore_japanese | Ignore Japanese text                 | "false" |
-| ignore_korean   | Ignore Korean text                   | "false" |
+| ignore_chinese  | Ignore Chinese text                  | false   |
+| ignore_japanese | Ignore Japanese text                 | false   |
+| ignore_korean   | Ignore Korean text                   | false   |
 
 ### Exit Codes
 
