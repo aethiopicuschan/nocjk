@@ -1,10 +1,11 @@
 # nocjk
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)](/LICENSE)
+[![nocjk Action](https://img.shields.io/badge/GitHub%20Action-nocjk-blue?logo=github-actions)](https://github.com/marketplace/actions/nocjk)
 [![Go Reference](https://pkg.go.dev/badge/github.com/aethiopicuschan/nocjk.svg)](https://pkg.go.dev/github.com/aethiopicuschan/nocjk)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aethiopicuschan/nocjk)](https://goreportcard.com/report/github.com/aethiopicuschan/nocjk)
 [![CI](https://github.com/aethiopicuschan/nocjk/actions/workflows/ci.yaml/badge.svg)](https://github.com/aethiopicuschan/nocjk/actions/workflows/ci.yaml)
-[![nocjk Action](https://img.shields.io/badge/GitHub%20Action-nocjk-blue?logo=github-actions)](https://github.com/marketplace/actions/nocjk)
+[![codecov](https://codecov.io/gh/aethiopicuschan/nocjk/graph/badge.svg?token=WU2I4L7ZMS)](https://codecov.io/gh/aethiopicuschan/nocjk)
 
 Detect CJK (Chinese, Japanese, and Korean) text in your repository.
 
