@@ -1,6 +1,6 @@
 module github.com/aethiopicuschan/nocjk
 
-go 1.24.2
+go 1.25.7
 
 require (
 	github.com/spf13/cobra v1.9.1
