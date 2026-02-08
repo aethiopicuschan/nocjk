@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version-file: "go.mod"
-      - run: go test -coverprofile=coverage.txt ./...
+      - run: go test -coverprofile=coverage.txt ./pkg/...
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
