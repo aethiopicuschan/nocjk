@@ -4,6 +4,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/aethiopicuschan/nocjk.svg)](https://pkg.go.dev/github.com/aethiopicuschan/nocjk)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aethiopicuschan/nocjk)](https://goreportcard.com/report/github.com/aethiopicuschan/nocjk)
 [![CI](https://github.com/aethiopicuschan/nocjk/actions/workflows/ci.yaml/badge.svg)](https://github.com/aethiopicuschan/nocjk/actions/workflows/ci.yaml)
+[![nocjk Action](https://img.shields.io/badge/GitHub%20Action-nocjk-blue?logo=github-actions)](https://github.com/aethiopicuschan/nocjk)
 
 `nocjk` is a simple CLI tool and library to detect CJK (Chinese, Japanese, and Korean) text.
 

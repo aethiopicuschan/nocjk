@@ -1,0 +1,22 @@
+name: nocjk
+description: Detect CJK (Chinese, Japanese, Korean) text in files and fail if found
+inputs:
+  ignore_chinese:
+    description: Ignore Chinese text
+    required: false
+    default: "false"
+  ignore_japanese:
+    description: Ignore Japanese text
+    required: false
+    default: "false"
+  ignore_korean:
+    description: Ignore Korean text
+    required: false
+    default: "false"
+  args:
+    description: Paths or arguments to pass to nocjk
+    required: false
+    default: "."
+runs:
+  using: docker
+  image: Dockerfile
