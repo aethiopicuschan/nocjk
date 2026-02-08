@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Detect CJK text
-        uses: aethiopicuschan/nocjk@v2
+        uses: aethiopicuschan/nocjk@v1
 ```
 
 ## Inputs
